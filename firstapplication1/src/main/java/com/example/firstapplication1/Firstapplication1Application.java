@@ -3,6 +3,7 @@ package com.example.firstapplication1;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class Firstapplication1Application {
 
@@ -10,6 +11,4 @@ public class Firstapplication1Application {
 		SpringApplication.run(Firstapplication1Application.class, args);
 
 
-	}
-
-}
+	}}
