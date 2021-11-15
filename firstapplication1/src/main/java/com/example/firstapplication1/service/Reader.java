@@ -14,21 +14,21 @@ public class Reader implements NamesReader {
 
   private BankAccount bankAccount;
 
+
   @Override
-  public String reader(File file) {
+  public String reader(File file) throws IOException {
+
     List<String> lines;
-    try {
+
       lines = Files.readAllLines(Paths.get(String.valueOf(file)));
-    } catch (IOException e) {
-      e.printStackTrace();
-      return null;
-    }
+
     Random random = new Random();
     String nameMale = lines.get(random.nextInt(lines.size()));
 
     return nameMale;
-  }
-}
+
+
+  }}
 
 
 

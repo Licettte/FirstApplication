@@ -3,8 +3,10 @@ package com.example.firstapplication1.service;
 import com.example.firstapplication1.model.BankAccount;
 import com.example.firstapplication1.model.Kind;
 import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 import java.util.UUID;
+import javax.imageio.IIOException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +23,15 @@ public class BankAccountClass implements BankAccountCreator {
   static final String path4 = "D:\\lp2\\NamesForBankAccounts\\WomansPatronymics.txt";
   static final String path5 = "D:\\lp2\\NamesForBankAccounts\\WomansSurnames.txt";
 
-
   private final NamesReader namesReader;
 
-  public BankAccount bankAccount(Kind kind) {
+  public BankAccount bankAccount(Kind kind) throws Exception {
+
     BankAccount bankAccount = new BankAccount();
-    kind = Kind.generateRandomKind();
+
+    if (kind == Kind.ANY) {
+      kind = Kind.generateRandomKind();
+    }
 
     if (kind == Kind.MALE) {
 
@@ -42,6 +47,7 @@ public class BankAccountClass implements BankAccountCreator {
     if (kind == Kind.FEMALE) {
 
       bankAccount.setKind(kind);
+
       bankAccount.setFirstName(namesReader.reader(new File(path3)));
       bankAccount.setLastName(namesReader.reader(new File(path5)));
       bankAccount.setPatronymic(namesReader.reader(new File(path4)));
@@ -49,10 +55,7 @@ public class BankAccountClass implements BankAccountCreator {
       bankAccount.setAccountNumber(new Random().nextLong());
       bankAccount.setUuid(UUID.randomUUID());
     }
-    if (kind == Kind.ANY) {
-      kind = Kind.generateRandomKind();
-      return bankAccount(kind);
-    }
+
     return bankAccount;
   }
 }

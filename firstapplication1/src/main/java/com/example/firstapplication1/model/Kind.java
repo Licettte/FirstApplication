@@ -5,7 +5,8 @@ public enum Kind  {
   MALE, FEMALE, ANY;
 
   public static Kind generateRandomKind() {
-    Kind[] values = Kind.values();
+    Kind[] values = {MALE, FEMALE};
+    Kind.values();
     int length = values.length;
     int randIndex = new Random().nextInt(length);
     return values[randIndex];
