@@ -12,4 +12,3 @@ public enum Kind  {
     return values[randIndex];
   }
 }
-

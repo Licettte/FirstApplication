@@ -13,26 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-
 public class Controller {
 
   private final BankAccountCreator bankAccountCreator;
 
   @GetMapping("/getAccount")
-
   public BankAccount bankAccount() {
     BankAccount bankAccount = new BankAccount();
     return bankAccount;
   }
 
   @PostMapping("/getAccountByKind")
-
   public Response response(@RequestBody Request request) {
-
     Response response = new Response();
     response.setResponseId(UUID.randomUUID());
     response.setRequestId(request.getRequestId());
-
     try {
       response.setAccount(bankAccountCreator.bankAccount(request.getKind()));
       return response;
@@ -42,7 +37,3 @@ public class Controller {
     }
   }
 }
-
-
-
-
