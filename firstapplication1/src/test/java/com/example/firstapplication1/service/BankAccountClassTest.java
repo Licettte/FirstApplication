@@ -21,12 +21,12 @@ class BankAccountClassTest {
   Kind kind;
   BankAccount bankAccount;
 
-  @Test
+   @Test
   public void testCorrectAnyKind() throws Exception {
-    assertTrue("Correct Any Kind", (MALE.equals(bankAccountClass.bankAccount(ANY).getKind())
-        || FEMALE.equals(bankAccountClass.bankAccount(ANY).getKind())));
+    Kind kind = bankAccountClass.bankAccount(ANY).getKind();
+    assertTrue("Correct Any Kind", (MALE.equals(kind)) || FEMALE.equals(kind));
   }
-
+  
   @Test
   public void testCorrectFemaleKind() throws Exception {
     assertEquals(FEMALE, bankAccountClass.bankAccount(FEMALE).getKind());
